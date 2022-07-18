@@ -2,7 +2,7 @@
  * @Author: 朽木白
  * @Date: 2022-07-18 16:12:20
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-07-18 17:29:24
+ * @LastEditTime: 2022-07-18 17:32:44
  * @Description:
  */
 
@@ -69,12 +69,22 @@ exports.diffArray = (c1, c2, { mountElement, patch, unmount, move }) => {
     e2--;
   }
 
-  // *3 老节点没了，新节点还有
+  // *3 老节点没了，新节点还有，新增节点
   if (i > e1) {
     if (i <= e2) {
       while (i <= e2) {
         const n2 = c2[i];
         mountElement(n2.key);
+        i++;
+      }
+    }
+  }
+  // *4 老节点还有，新节点没了，删除节点
+  else if (i > e2) {
+    if (i <= e1) {
+      while (i <= e1) {
+        const n1 = c1[i];
+        unmount(n1.key);
         i++;
       }
     }
