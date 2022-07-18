@@ -4,7 +4,7 @@ describe('数组Diff', () => {
     const patch = jest.fn();
     const unmount = jest.fn();
     const move = jest.fn();
-    const { diffArray } = require('../vue-diff');
+    const { diffArray } = require('../src/vue-diff');
     diffArray(
       [{ key: 'a' }, { key: 'b' }, { key: 'c' }],
       [{ key: 'a' }, { key: 'b' }, { key: 'd' }, { key: 'e' }],
@@ -21,32 +21,32 @@ describe('数组Diff', () => {
     expect(patch.mock.calls[0][0]).toBe('a');
     expect(patch.mock.calls[1][0]).toBe('b');
   });
-  it('2. 右边边查找', () => {
-    const mountElement = jest.fn();
-    const patch = jest.fn();
-    const unmount = jest.fn();
-    const move = jest.fn();
-    const { diffArray } = require('../vue-diff');
-    diffArray(
-      [{ key: 'a' }, { key: 'b' }, { key: 'c' }],
-      [{ key: 'd' }, { key: 'e' }, { key: 'b' }, { key: 'c' }],
-      {
-        mountElement,
-        patch,
-        unmount,
-        move,
-      }
-    );
-    expect(patch.mock.calls.length).toBe(2);
-    expect(patch.mock.calls[0][0]).toBe('c');
-    expect(patch.mock.calls[1][0]).toBe('b');
-  });
+  // it('2. 右边边查找', () => {
+  //   const mountElement = jest.fn();
+  //   const patch = jest.fn();
+  //   const unmount = jest.fn();
+  //   const move = jest.fn();
+  //   const { diffArray } = require('../src/vue-diff');
+  //   diffArray(
+  //     [{ key: 'a' }, { key: 'b' }, { key: 'c' }],
+  //     [{ key: 'd' }, { key: 'e' }, { key: 'b' }, { key: 'c' }],
+  //     {
+  //       mountElement,
+  //       patch,
+  //       unmount,
+  //       move,
+  //     }
+  //   );
+  //   expect(patch.mock.calls.length).toBe(2);
+  //   expect(patch.mock.calls[0][0]).toBe('c');
+  //   expect(patch.mock.calls[1][0]).toBe('b');
+  // });
   // it("3. 老节点没了，新节点还有", () => {
   //   const mountElement = jest.fn();
   //   const patch = jest.fn();
   //   const unmount = jest.fn();
   //   const move = jest.fn();
-  //   const { diffArray } = require("../vue-diff");
+  //   const { diffArray } = require("../src/vue-diff");
   //   diffArray(
   //     [{ key: "a" }, { key: "b" }],
   //     [{ key: "a" }, { key: "b" }, { key: "c" }],
@@ -67,7 +67,7 @@ describe('数组Diff', () => {
   //   const patch = jest.fn();
   //   const unmount = jest.fn();
   //   const move = jest.fn();
-  //   const { diffArray } = require("../vue-diff");
+  //   const { diffArray } = require("../src/vue-diff");
   //   diffArray(
   //     [{ key: "a" }, { key: "b" }, { key: "c" }],
   //     [{ key: "a" }, { key: "b" }],
@@ -90,7 +90,7 @@ describe('数组Diff', () => {
   //   const patch = jest.fn();
   //   const unmount = jest.fn();
   //   const move = jest.fn();
-  //   const { diffArray } = require("../vue-diff");
+  //   const { diffArray } = require("../src/vue-diff");
   //   diffArray(
   //     [
   //       { key: "a" },
@@ -148,7 +148,7 @@ describe('数组Diff', () => {
   //   const patch = jest.fn();
   //   const unmount = jest.fn();
   //   const move = jest.fn();
-  //   const { diffArray } = require("../vue-diff");
+  //   const { diffArray } = require("../src/vue-diff");
   //   diffArray(
   //     [
   //       { key: "a" },
