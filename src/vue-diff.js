@@ -2,7 +2,7 @@
  * @Author: 朽木白
  * @Date: 2022-07-18 16:12:20
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-07-18 17:18:33
+ * @LastEditTime: 2022-07-18 17:29:24
  * @Description:
  */
 
@@ -67,5 +67,16 @@ exports.diffArray = (c1, c2, { mountElement, patch, unmount, move }) => {
     }
     e1--;
     e2--;
+  }
+
+  // *3 老节点没了，新节点还有
+  if (i > e1) {
+    if (i <= e2) {
+      while (i <= e2) {
+        const n2 = c2[i];
+        mountElement(n2.key);
+        i++;
+      }
+    }
   }
 };
