@@ -2,7 +2,7 @@
  * @Author: 朽木白
  * @Date: 2022-07-18 16:12:20
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-07-18 17:20:09
+ * @LastEditTime: 2022-07-18 17:18:33
  * @Description:
  */
 
@@ -54,5 +54,18 @@ exports.diffArray = (c1, c2, { mountElement, patch, unmount, move }) => {
       break;
     }
     i++;
+  }
+
+  // *2 从右边往左，如果元素可以复用就继续往左边，否则就停止循环
+  while (i <= e1 && i <= e2) {
+    const n1 = c1[e1];
+    const n2 = c2[e2];
+    if (isSameVnodeType(n1, n2)) {
+      patch(n1.key);
+    } else {
+      break;
+    }
+    e1--;
+    e2--;
   }
 };
